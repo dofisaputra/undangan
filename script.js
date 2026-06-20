@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // List of gallery image filenames inside assets/images/
     // You can add as many prewed_gallery* files here as you want!
     const galleryFiles = [
-        'prewed_gallery1.jpg',
-        'prewed_gallery2.jpg'
+        'prewed_gallery1.webp',
+        'prewed_gallery2.webp'
     ];
 
     const renderGallery = () => {
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = `assets/images/${filename}`;
             img.alt = `Foto Prewedding ${idx + 1}`;
+            img.loading = 'lazy';
 
             item.appendChild(img);
             galleryGrid.appendChild(item);

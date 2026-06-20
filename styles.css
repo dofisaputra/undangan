@@ -116,14 +116,14 @@ a {
 /* Sections */
 .section-light {
     background-color: var(--clr-cream);
-    background-image: linear-gradient(rgba(58, 48, 38, 0.84), rgba(58, 48, 38, 0.84)), url('assets/images/batik.jpg');
+    background-image: linear-gradient(rgba(58, 48, 38, 0.84), rgba(58, 48, 38, 0.84)), url('assets/images/batik.webp');
     background-size: 300px;
     position: relative;
 }
 
 .section-pattern {
     background-color: var(--clr-cream-dark);
-    background-image: url('assets/images/batik.jpg');
+    background-image: url('assets/images/batik.webp');
     background-size: 300px;
     background-blend-mode: overlay;
     position: relative;
