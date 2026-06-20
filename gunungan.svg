@@ -1,0 +1,25 @@
+<svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+    <!-- Base styles are inherited from .ornament svg -->
+    <g stroke="currentColor" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Outer Shell -->
+        <path d="M 60 140 L 30 140 C 20 140, 15 130, 15 115 C 15 100, 25 95, 20 85 C 15 75, 28 65, 28 55 C 28 45, 40 35, 60 10 C 80 35, 92 45, 92 55 C 92 65, 105 75, 100 85 C 95 95, 105 100, 105 115 C 105 130, 100 140, 90 140 L 60 140 Z" stroke-width="1.8"/>
+        <!-- Inner Shell (Double Line) -->
+        <path d="M 60 135 L 34 135 C 26 135, 20 127, 20 115 C 20 103, 28 98, 24 90 C 20 82, 31 72, 31 60 C 31 52, 42 42, 60 18 C 78 42, 89 52, 89 60 C 89 72, 100 82, 96 90 C 92 98, 100 103, 100 115 C 100 127, 94 135, 86 135 L 60 135 Z" stroke-width="1"/>
+        <!-- Javanese Gate (Gapura) -->
+        <path d="M 45 135 L 45 110 L 75 110 L 75 135 M 40 110 L 48 102 L 72 102 L 80 110 M 48 102 L 60 93 L 72 102 M 50 135 L 50 116 L 70 116 L 70 135 M 60 135 L 60 116"/>
+        <!-- Tree Trunk -->
+        <path d="M 60 93 L 60 45" stroke-width="2"/>
+        <!-- Tree Branches -->
+        <path d="M 60 85 C 50 85, 40 75, 30 80 C 25 82, 27 90, 33 88 C 38 86, 45 92, 55 90 M 60 85 C 70 85, 80 75, 90 80 C 95 82, 93 90, 87 88 C 82 86, 75 92, 65 90 M 60 70 C 48 70, 42 58, 32 63 C 28 65, 30 73, 36 71 C 41 69, 48 77, 56 75 M 60 70 C 72 70, 78 58, 88 63 C 92 65, 90 73, 84 71 C 79 69, 72 77, 64 75 M 60 55 C 52 52, 48 43, 38 46 C 34 47, 36 55, 42 53 C 47 51, 52 58, 57 56 M 60 55 C 68 52, 72 43, 82 46 C 86 47, 84 55, 78 53 C 73 51, 68 58, 63 56 M 60 30 C 56 25, 54 20, 60 15 C 66 20, 64 25, 60 30"/>
+        <!-- Extra Batik motifs -->
+        <path d="M 26 105 C 32 108, 35 102, 31 98 C 28 95, 22 98, 25 103 C 27 106, 31 104, 30 101 M 94 105 C 88 108, 85 102, 89 98 C 92 95, 98 98, 95 103 C 93 106, 89 104, 90 101 M 34 50 C 39 48, 42 53, 39 56 C 36 58, 32 55, 34 51 C 36 49, 38 51, 37 53 M 86 50 C 81 48, 78 53, 81 56 C 84 58, 88 55, 86 51 C 84 49, 82 51, 83 53 " stroke-width="0.8" opacity="0.8"/>
+    </g>
+    <!-- Door handle dots -->
+    <circle cx="57" cy="126" r="1.5" fill="currentColor"/>
+    <circle cx="63" cy="126" r="1.5" fill="currentColor"/>
+    <!-- Initials flanking the gate/trunk -->
+    <g fill="currentColor" font-family="'Playfair Display', 'Georgia', serif" font-weight="bold" font-size="16" text-anchor="middle">
+        <text x="35" y="105">D</text>
+        <text x="85" y="105">R</text>
+    </g>
+</svg>

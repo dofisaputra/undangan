@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Dofi & Rafina</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="locked">
+
+    <!-- Audio Player -->
+    <audio id="bg-music" loop>
+        <source src="assets/audio/backsound.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-control" class="music-control">
+        <i class="fas fa-compact-disc"></i>
+    </button>
+
+    <!-- Cover Page -->
+    <section id="cover" class="cover">
+        <!-- Cover Slideshow Backgrounds -->
+        <div class="cover-slideshow">
+            <div class="cover-slide active" style="background-image: url('assets/images/prewed_main1.jpg');"></div>
+            <div class="cover-slide" style="background-image: url('assets/images/prewed_main2.jpg');"></div>
+            <div class="cover-slide" style="background-image: url('assets/images/prewed_main3.jpg');"></div>
+        </div>
+        <div class="cover-overlay"></div>
+        <div class="cover-content">
+            <p class="subtitle">Pernikahan</p>
+            <h1 class="title-script">Dofi & Rafina</h1>
+            <p class="date">Sabtu, 22 Agustus 2026</p>
+            <p class="instruction">Kepada Yth.<br>Bapak/Ibu/Saudara/i</p>
+            <div class="guest-name">Tamu Undangan</div>
+            <p class="apology">*Mohon maaf bila ada kesalahan penulisan nama/gelar</p>
+            <button id="btn-open" class="btn-primary">
+                <i class="fas fa-envelope-open-text"></i> Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content (Hidden Initially) -->
+    <main id="main-content" class="hidden">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero section-dark">
+            <!-- Slideshow Backgrounds -->
+            <div class="hero-slideshow">
+                <div class="slide active" style="background-image: url('assets/images/prewed_main1.jpg');"></div>
+                <div class="slide" style="background-image: url('assets/images/prewed_main2.jpg');"></div>
+                <div class="slide" style="background-image: url('assets/images/prewed_main3.jpg');"></div>
+            </div>
+            <div class="overlay"></div>
+            <div class="hero-content-wrapper">
+                <!-- Top Group -->
+                <div class="hero-top fade-up">
+                    <div class="ornament">
+                        <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="currentColor" fill="none" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <!-- Outer Shell -->
+                                <path
+                                    d="M 60 140 L 30 140 C 20 140, 15 130, 15 115 C 15 100, 25 95, 20 85 C 15 75, 28 65, 28 55 C 28 45, 40 35, 60 10 C 80 35, 92 45, 92 55 C 92 65, 105 75, 100 85 C 95 95, 105 100, 105 115 C 105 130, 100 140, 90 140 L 60 140 Z"
+                                    stroke-width="1.8" />
+                                <!-- Inner Shell (Double Line) -->
+                                <path
+                                    d="M 60 135 L 34 135 C 26 135, 20 127, 20 115 C 20 103, 28 98, 24 90 C 20 82, 31 72, 31 60 C 31 52, 42 42, 60 18 C 78 42, 89 52, 89 60 C 89 72, 100 82, 96 90 C 92 98, 100 103, 100 115 C 100 127, 94 135, 86 135 L 60 135 Z"
+                                    stroke-width="1" />
+                                <!-- Javanese Gate (Gapura) -->
+                                <path
+                                    d="M 45 135 L 45 110 L 75 110 L 75 135 M 40 110 L 48 102 L 72 102 L 80 110 M 48 102 L 60 93 L 72 102 M 50 135 L 50 116 L 70 116 L 70 135 M 60 135 L 60 116" />
+                                <!-- Tree Trunk -->
+                                <path d="M 60 93 L 60 45" stroke-width="2" />
+                                <!-- Tree Branches -->
+                                <path
+                                    d="M 60 85 C 50 85, 40 75, 30 80 C 25 82, 27 90, 33 88 C 38 86, 45 92, 55 90 M 60 85 C 70 85, 80 75, 90 80 C 95 82, 93 90, 87 88 C 82 86, 75 92, 65 90 M 60 70 C 48 70, 42 58, 32 63 C 28 65, 30 73, 36 71 C 41 69, 48 77, 56 75 M 60 70 C 72 70, 78 58, 88 63 C 92 65, 90 73, 84 71 C 79 69, 72 77, 64 75 M 60 55 C 52 52, 48 43, 38 46 C 34 47, 36 55, 42 53 C 47 51, 52 58, 57 56 M 60 55 C 68 52, 72 43, 82 46 C 86 47, 84 55, 78 53 C 73 51, 68 58, 63 56 M 60 30 C 56 25, 54 20, 60 15 C 66 20, 64 25, 60 30" />
+                                <!-- Extra Batik motifs -->
+                                <path
+                                    d="M 26 105 C 32 108, 35 102, 31 98 C 28 95, 22 98, 25 103 C 27 106, 31 104, 30 101 M 94 105 C 88 108, 85 102, 89 98 C 92 95, 98 98, 95 103 C 93 106, 89 104, 90 101 M 34 50 C 39 48, 42 53, 39 56 C 36 58, 32 55, 34 51 C 36 49, 38 51, 37 53 M 86 50 C 81 48, 78 53, 81 56 C 84 58, 88 55, 86 51 C 84 49, 82 51, 83 53 "
+                                    stroke-width="0.8" opacity="0.8" />
+                            </g>
+                            <!-- Door handle dots -->
+                            <circle cx="57" cy="126" r="1.5" fill="currentColor" />
+                            <circle cx="63" cy="126" r="1.5" fill="currentColor" />
+                            <!-- Initials flanking the gate/trunk -->
+                            <g fill="currentColor" font-family="'Playfair Display', 'Georgia', serif" font-weight="bold"
+                                font-size="16" text-anchor="middle">
+                                <text x="35" y="105">D</text>
+                                <text x="85" y="105">R</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="subtitle">Kami Mengundang Anda</p>
+                    <h2 class="title-script">Dofi & Rafina</h2>
+                </div>
+
+                <!-- Bottom Group -->
+                <div class="hero-bottom fade-up">
+                    <div class="hero-date">22 . 08 . 2026</div>
+                    <div class="countdown" id="countdown">
+                        <div class="time-box"><span id="days">00</span>
+                            <p>Hari</p>
+                        </div>
+                        <div class="time-box"><span id="hours">00</span>
+                            <p>Jam</p>
+                        </div>
+                        <div class="time-box"><span id="minutes">00</span>
+                            <p>Menit</p>
+                        </div>
+                        <div class="time-box"><span id="seconds">00</span>
+                            <p>Detik</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section id="quote" class="quote section-light">
+            <div class="container fade-up">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p class="quote-text">
+                    "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu
+                    sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+                </p>
+                <p class="quote-source">(QS. Ar-Rum: 21)</p>
+            </div>
+        </section>
+
+        <!-- Couple Section -->
+        <section id="couple" class="couple section-pattern">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Mempelai</h2>
+                    <div class="ornament-line"></div>
+                </div>
+
+                <div class="couple-wrapper">
+                    <!-- Groom -->
+                    <div class="person fade-right">
+                        <div class="person-img-wrapper">
+                            <img src="assets/images/groom_portrait.jpg" alt="Pengantin Pria">
+                        </div>
+                        <h3 class="person-name">Dofi Saputra</h3>
+                        <p class="person-parents">Putra pertama dari<br>Bapak Diarjo dan Ibu Jumini</p>
+                        <a href="https://instagram.com/dofisaputra" target="_blank" class="ig-link"><i
+                                class="fab fa-instagram"></i> @dofisaputra</a>
+                    </div>
+
+                    <div class="ampersand fade-up">&</div>
+
+                    <!-- Bride -->
+                    <div class="person fade-left">
+                        <div class="person-img-wrapper">
+                            <img src="assets/images/bride_portrait.jpg" alt="Pengantin Wanita">
+                        </div>
+                        <h3 class="person-name">Rafina Arinita</h3>
+                        <p class="person-parents">Putri bungsu dari<br>Bapak Joko Susilo dan Ibu Arifah Fardani</p>
+                        <a href="https://instagram.com/rafinarinita" target="_blank" class="ig-link"><i
+                                class="fab fa-instagram"></i> @rafinarinita</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Story Section -->
+        <section id="story" class="story section-light">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Kisah Kita</h2>
+                    <div class="ornament-line"></div>
+                </div>
+
+                <div class="timeline">
+                    <!-- 2019 -->
+                    <div class="timeline-item fade-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_school.jpg" alt="2019">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2019</h4>
+                                <div class="timeline-icon-animate icon-science"><i class="fas fa-flask"></i></div>
+                            </div>
+                            <p>Kisah kami dimulai di bangku SMK. Sebagai kakak dan adik kelas dalam jurusan yang sama,
+                                kami dipertemukan melalui kegiatan ekstrakurikuler Sains. Saat itu, kami hanyalah dua
+                                orang yang memiliki minat belajar yang sama.</p>
+                        </div>
+                    </div>
+                    <!-- 2020 -->
+                    <div class="timeline-item fade-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_chat.jpg" alt="2020">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2020</h4>
+                                <div class="timeline-icon-animate icon-chat"><i class="fas fa-comments"></i></div>
+                            </div>
+                            <p>Percakapan kami mulai menjadi lebih intens. Awalnya hanya seputar tugas sekolah, materi
+                                pelajaran, dan kegiatan ekstrakurikuler. Namun tanpa disadari, dari obrolan sederhana
+                                itu tumbuh rasa nyaman untuk saling berbagi cerita dan bertukar pikiran.</p>
+                        </div>
+                    </div>
+                    <!-- 2021 -->
+                    <div class="timeline-item fade-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_grad.jpg" alt="2021">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2021</h4>
+                                <div class="timeline-icon-animate icon-grad"><i class="fas fa-graduation-cap"></i></div>
+                            </div>
+                            <p>Meski telah lulus sekolah, hubungan kami tetap terjalin dengan baik. Jarak dan kesibukan
+                                tidak menghentikan komunikasi yang semakin dewasa. Kami menjadi tempat untuk saling
+                                mendengar, mendukung, dan berbagi sudut pandang tentang banyak hal.</p>
+                        </div>
+                    </div>
+                    <!-- 2022 -->
+                    <div class="timeline-item fade-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_distance.jpg" alt="2022">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2022</h4>
+                                <div class="timeline-icon-animate icon-distance"><i class="fas fa-heart-broken"></i>
+                                </div>
+                            </div>
+                            <p>Perjalanan kami tidak selalu berjalan mulus. Tahun ini menjadi salah satu fase yang cukup
+                                berat sehingga komunikasi yang dulu begitu intens perlahan merenggang. Kami hanya saling
+                                mengikuti kabar melalui media sosial, menjalani jalan hidup masing-masing, sembari
+                                memperbaiki diri.</p>
+                        </div>
+                    </div>
+                    <!-- 2023 -->
+                    <div class="timeline-item fade-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_reunion.jpg" alt="2023">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2023</h4>
+                                <div class="timeline-icon-animate icon-reunion"><i class="fas fa-sync-alt"></i></div>
+                            </div>
+                            <p>Takdir kembali mempertemukan kami dengan versi terbaik kami. Dengan dukungan orang-orang
+                                terdekat, kami mulai berkomunikasi kembali. Dari sekadar bertukar kabar, kami kembali
+                                menemukan kenyamanan yang pernah ada dan menyadari bahwa cerita kami ternyata belum
+                                berakhir.</p>
+                        </div>
+                    </div>
+                    <!-- 2024 -->
+                    <div class="timeline-item fade-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_proposal.jpg" alt="2024">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2024</h4>
+                                <div class="timeline-icon-animate icon-proposal"><i class="fas fa-handshake"></i></div>
+                            </div>
+                            <p>Menariknya, kami tidak pernah memiliki tanggal jadian ataupun momen pengungkapan perasaan
+                                yang resmi. Namun setelah pertemuan kedua keluarga sembari meminta restu kepada kedua
+                                orang tua, kami justru melangkah lebih jauh dengan membicarakan masa depan dan
+                                menentukan tanggal lamaran.</p>
+                        </div>
+                    </div>
+                    <!-- 2025 -->
+                    <div class="timeline-item fade-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_engagement.jpg" alt="2025">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2025</h4>
+                                <div class="timeline-icon-animate icon-engagement"><i class="fas fa-ring"></i></div>
+                            </div>
+                            <p>Lamaran menjadi awal dari komitmen yang lebih besar. Dengan kesiapan dan keyakinan yang
+                                matang, kami mulai menyusun langkah demi langkah menuju kehidupan baru yang kami impikan
+                                bersama.</p>
+                        </div>
+                    </div>
+                    <!-- 2026 -->
+                    <div class="timeline-item fade-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-img-wrapper">
+                                <img src="assets/images/story_wedding.jpg" alt="2026">
+                            </div>
+                            <div class="timeline-header-flex">
+                                <h4 class="timeline-title">2026</h4>
+                                <div class="timeline-icon-animate icon-wedding"><i class="fas fa-dove"></i></div>
+                            </div>
+                            <p>Menjelang hari pernikahan, berbagai tantangan datang silih berganti. Namun setiap
+                                rintangan justru menguatkan keyakinan kami untuk tetap berjalan berdampingan. Dengan
+                                penuh syukur dan do'a, kami memilih untuk mengikat janji suci dalam pernikahan, membuka
+                                lembaran baru, dan memulai kisah yang sesungguhnya sebagai pasangan seumur hidup.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="story-subquote mt-4 fade-up">"Bukan tentang seberapa cepat kami sampai, tetapi tentang
+                    bagaimana kami tetap memilih satu sama lain di setiap perjalanan." - Dofina</p>
+            </div>
+        </section>
+
+        <!-- Event Detail Section -->
+        <section id="event" class="event section-pattern">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Detail Acara</h2>
+                    <div class="ornament-line"></div>
+                </div>
+
+                <div class="event-cards">
+                    <div class="event-card glass-card fade-up">
+                        <div class="event-icon"><i class="fas fa-ring"></i></div>
+                        <h3>Akad Nikah</h3>
+                        <p class="event-day">Sabtu</p>
+                        <p class="event-date">22 Agustus 2026</p>
+                        <p class="event-time">08:30 - 10:00 WIB</p>
+                        <p class="event-location"><strong>Masjid Agung Kota Tegal</strong><br>Jl. KH. Wahid Hasyim,
+                            Mangkukusuman,
+                            Kec. Tegal Timur, Kota Tegal</p>
+                        <a href="https://maps.app.goo.gl/gL4XsLCo4Nu7gSgU8" target="_blank" class="btn-outline">
+                            <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
+                        </a>
+                    </div>
+
+                    <div class="event-card glass-card fade-up" style="animation-delay: 0.2s;">
+                        <div class="event-icon"><i class="fas fa-champagne-glasses"></i></div>
+                        <h3>Resepsi</h3>
+                        <p class="event-day">Sabtu</p>
+                        <p class="event-date">22 Agustus 2026</p>
+                        <p class="event-time">11:00 - 14.30 WIB</p>
+                        <p class="event-location"><strong>Karlita Hotel Tegal</strong><br>Jl. Brigjen Katamso No. 31,
+                            Tegalsari,
+                            Kec. Tegal Barat, Kota Tegal</p>
+                        <a href="https://maps.app.goo.gl/sG1u4sQo5ZgC4yai9" target="_blank" class="btn-outline">
+                            <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery section-light">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Galeri</h2>
+                    <div class="ornament-line"></div>
+                </div>
+
+                <div id="gallery-grid" class="gallery-grid">
+                    <!-- Dinamis dirender oleh JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Gift/Transfer Section -->
+        <section id="gift" class="gift section-light">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Amplop Digital</h2>
+                    <div class="ornament-line"></div>
+                    <p class="mt-4">Doa restu Anda merupakan karunia terindah bagi kami. Namun jika Anda ingin
+                        memberikan hadiah digital, silakan transfer melalui rekening berikut:</p>
+                </div>
+
+                <div class="gift-cards fade-up">
+                    <!-- Groom's Bank -->
+                    <div class="gift-card glass-card">
+                        <div class="bank-name">BANK BCA</div>
+                        <div class="account-num" id="rek-groom">7311234567</div>
+                        <div class="account-holder">a.n. Dofi Saputra</div>
+                        <button class="btn-outline btn-copy mt-4" data-target="rek-groom">
+                            <i class="far fa-copy"></i> Salin No. Rekening
+                        </button>
+                    </div>
+
+                    <!-- Bride's Bank -->
+                    <div class="gift-card glass-card">
+                        <div class="bank-name">BANK MANDIRI</div>
+                        <div class="account-num" id="rek-bride">1370012345678</div>
+                        <div class="account-holder">a.n. Rafina Arinita</div>
+                        <button class="btn-outline btn-copy mt-4" data-target="rek-bride">
+                            <i class="far fa-copy"></i> Salin No. Rekening
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP & Guestbook Section -->
+        <section id="rsvp" class="rsvp section-pattern">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Ucapan &amp; RSVP</h2>
+                    <div class="ornament-line"></div>
+                </div>
+
+                <div class="rsvp-container glass-card fade-up">
+                    <form id="rsvp-form">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="attendance">Kehadiran</label>
+                            <select id="attendance" required>
+                                <option value="" disabled selected>Apakah Anda akan hadir?</option>
+                                <option value="hadir">Ya, Saya akan hadir</option>
+                                <option value="tidak">Maaf, Saya tidak bisa hadir</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ucapan & Doa</label>
+                            <textarea id="message" rows="4" placeholder="Tuliskan ucapan dan doa untuk mempelai"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Kirim Ucapan</button>
+                    </form>
+                </div>
+
+                <!-- Guestbook / Daftar Ucapan -->
+                <div class="wishes-container glass-card fade-up mt-4">
+                    <h3 class="wishes-title"><i class="fas fa-comments"></i> Doa &amp; Ucapan Tamu</h3>
+                    <div class="wishes-loader" id="wishes-loader">
+                        <i class="fas fa-spinner fa-spin"></i> Memuat ucapan...
+                    </div>
+                    <div class="wishes-list hidden" id="wishes-list">
+                        <!-- Dinamis dirender oleh JS -->
+                    </div>
+                    <div class="wishes-empty hidden" id="wishes-empty">
+                        Belum ada ucapan. Jadilah yang pertama memberikan doa restu!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container fade-up">
+                <div class="ornament">
+                    <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+                        <g stroke="currentColor" fill="none" stroke-width="1.2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <!-- Outer Shell -->
+                            <path
+                                d="M 60 140 L 30 140 C 20 140, 15 130, 15 115 C 15 100, 25 95, 20 85 C 15 75, 28 65, 28 55 C 28 45, 40 35, 60 10 C 80 35, 92 45, 92 55 C 92 65, 105 75, 100 85 C 95 95, 105 100, 105 115 C 105 130, 100 140, 90 140 L 60 140 Z"
+                                stroke-width="1.8" />
+                            <!-- Inner Shell (Double Line) -->
+                            <path
+                                d="M 60 135 L 34 135 C 26 135, 20 127, 20 115 C 20 103, 28 98, 24 90 C 20 82, 31 72, 31 60 C 31 52, 42 42, 60 18 C 78 42, 89 52, 89 60 C 89 72, 100 82, 96 90 C 92 98, 100 103, 100 115 C 100 127, 94 135, 86 135 L 60 135 Z"
+                                stroke-width="1" />
+                            <!-- Javanese Gate (Gapura) -->
+                            <path
+                                d="M 45 135 L 45 110 L 75 110 L 75 135 M 40 110 L 48 102 L 72 102 L 80 110 M 48 102 L 60 93 L 72 102 M 50 135 L 50 116 L 70 116 L 70 135 M 60 135 L 60 116" />
+                            <!-- Tree Trunk -->
+                            <path d="M 60 93 L 60 45" stroke-width="2" />
+                            <!-- Tree Branches -->
+                            <path
+                                d="M 60 85 C 50 85, 40 75, 30 80 C 25 82, 27 90, 33 88 C 38 86, 45 92, 55 90 M 60 85 C 70 85, 80 75, 90 80 C 95 82, 93 90, 87 88 C 82 86, 75 92, 65 90 M 60 70 C 48 70, 42 58, 32 63 C 28 65, 30 73, 36 71 C 41 69, 48 77, 56 75 M 60 70 C 72 70, 78 58, 88 63 C 92 65, 90 73, 84 71 C 79 69, 72 77, 64 75 M 60 55 C 52 52, 48 43, 38 46 C 34 47, 36 55, 42 53 C 47 51, 52 58, 57 56 M 60 55 C 68 52, 72 43, 82 46 C 86 47, 84 55, 78 53 C 73 51, 68 58, 63 56 M 60 30 C 56 25, 54 20, 60 15 C 66 20, 64 25, 60 30" />
+                            <!-- Extra Batik motifs -->
+                            <path
+                                d="M 26 105 C 32 108, 35 102, 31 98 C 28 95, 22 98, 25 103 C 27 106, 31 104, 30 101 M 94 105 C 88 108, 85 102, 89 98 C 92 95, 98 98, 95 103 C 93 106, 89 104, 90 101 M 34 50 C 39 48, 42 53, 39 56 C 36 58, 32 55, 34 51 C 36 49, 38 51, 37 53 M 86 50 C 81 48, 78 53, 81 56 C 84 58, 88 55, 86 51 C 84 49, 82 51, 83 53 "
+                                stroke-width="0.8" opacity="0.8" />
+                        </g>
+                        <!-- Door handle dots -->
+                        <circle cx="57" cy="126" r="1.5" fill="currentColor" />
+                        <circle cx="63" cy="126" r="1.5" fill="currentColor" />
+                        <!-- Initials flanking the gate/trunk -->
+                        <g fill="currentColor" font-family="'Playfair Display', 'Georgia', serif" font-weight="bold"
+                            font-size="16" text-anchor="middle">
+                            <text x="35" y="105">D</text>
+                            <text x="85" y="105">R</text>
+                        </g>
+                    </svg>
+                </div>
+                <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk
+                    memberikan doa restu.</p>
+                <h2 class="title-script mt-4">Dofi & Rafina</h2>
+                <p class="hashtag mt-2">#FinalyfounDofi</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottom-nav" class="bottom-nav">
+        <a href="#hero" class="bottom-nav-item active" id="nav-hero">
+            <i class="fas fa-home"></i>
+            <span>Beranda</span>
+        </a>
+        <a href="#couple" class="bottom-nav-item" id="nav-couple">
+            <i class="fas fa-heart"></i>
+            <span>Mempelai</span>
+        </a>
+        <a href="#story" class="bottom-nav-item" id="nav-story">
+            <i class="fas fa-book-open"></i>
+            <span>Cerita</span>
+        </a>
+        <a href="#event" class="bottom-nav-item" id="nav-event">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Acara</span>
+        </a>
+        <a href="#gallery" class="bottom-nav-item" id="nav-gallery">
+            <i class="fas fa-images"></i>
+            <span>Galeri</span>
+        </a>
+        <a href="#gift" class="bottom-nav-item" id="nav-gift">
+            <i class="fas fa-wallet"></i>
+            <span>Amplop</span>
+        </a>
+        <a href="#rsvp" class="bottom-nav-item" id="nav-rsvp">
+            <i class="fas fa-envelope"></i>
+            <span>Ucapan</span>
+        </a>
+    </nav>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox">
+        <div class="lightbox-slider-container">
+            <div id="lightbox-slider" class="lightbox-slider">
+                <!-- Slides will be dynamically generated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
