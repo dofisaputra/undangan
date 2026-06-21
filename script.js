@@ -29,12 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Stagger animation delays
             item.style.animationDelay = `${(idx % 3) * 0.1}s`;
 
+            const picture = document.createElement('picture');
+
+            const source = document.createElement('source');
+            source.media = '(min-width: 768px)';
+            source.srcset = `assets/images_hd/${filename}`;
+
             const img = document.createElement('img');
             img.src = `assets/images/${filename}`;
             img.alt = `Foto Prewedding ${idx + 1}`;
             img.loading = 'lazy';
 
-            item.appendChild(img);
+            picture.appendChild(source);
+            picture.appendChild(img);
+            item.appendChild(picture);
             galleryGrid.appendChild(item);
         });
     };
@@ -514,9 +522,22 @@ document.addEventListener('DOMContentLoaded', () => {
         galleryImages.forEach(img => {
             const slide = document.createElement('div');
             slide.className = 'lightbox-slide';
+            
+            const picture = document.createElement('picture');
+            
+            const source = document.createElement('source');
+            source.media = '(min-width: 768px)';
+            
+            const src = img.getAttribute('src');
+            const filename = src.substring(src.lastIndexOf('/') + 1);
+            source.srcset = `assets/images_hd/${filename}`;
+            
             const slideImg = document.createElement('img');
-            slideImg.setAttribute('src', img.getAttribute('src'));
-            slide.appendChild(slideImg);
+            slideImg.src = src;
+            
+            picture.appendChild(source);
+            picture.appendChild(slideImg);
+            slide.appendChild(picture);
             lightboxSlider.appendChild(slide);
         });
         

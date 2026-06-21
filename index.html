@@ -34,9 +34,9 @@
     <section id="cover" class="cover">
         <!-- Cover Slideshow Backgrounds -->
         <div class="cover-slideshow">
-            <div class="cover-slide active" style="background-image: url('assets/images/prewed_main1.webp');"></div>
-            <div class="cover-slide" style="background-image: url('assets/images/prewed_main2.webp');"></div>
-            <div class="cover-slide" style="background-image: url('assets/images/prewed_main3.webp');"></div>
+            <div class="cover-slide active" style="--bg-mobile: url('assets/images/prewed_main1.webp'); --bg-desktop: url('assets/images_hd/prewed_main1.webp');"></div>
+            <div class="cover-slide" style="--bg-mobile: url('assets/images/prewed_main2.webp'); --bg-desktop: url('assets/images_hd/prewed_main2.webp');"></div>
+            <div class="cover-slide" style="--bg-mobile: url('assets/images/prewed_main3.webp'); --bg-desktop: url('assets/images_hd/prewed_main3.webp');"></div>
         </div>
         <div class="cover-overlay"></div>
         <div class="cover-content">
@@ -59,9 +59,9 @@
         <section id="hero" class="hero section-dark">
             <!-- Slideshow Backgrounds -->
             <div class="hero-slideshow">
-                <div class="slide active" style="background-image: url('assets/images/prewed_main1.webp');"></div>
-                <div class="slide" style="background-image: url('assets/images/prewed_main2.webp');"></div>
-                <div class="slide" style="background-image: url('assets/images/prewed_main3.webp');"></div>
+                <div class="slide active" style="--bg-mobile: url('assets/images/prewed_main1.webp'); --bg-desktop: url('assets/images_hd/prewed_main1.webp');"></div>
+                <div class="slide" style="--bg-mobile: url('assets/images/prewed_main2.webp'); --bg-desktop: url('assets/images_hd/prewed_main2.webp');"></div>
+                <div class="slide" style="--bg-mobile: url('assets/images/prewed_main3.webp'); --bg-desktop: url('assets/images_hd/prewed_main3.webp');"></div>
             </div>
             <div class="overlay"></div>
             <div class="hero-content-wrapper">
@@ -152,7 +152,10 @@
                     <!-- Groom -->
                     <div class="person fade-right">
                         <div class="person-img-wrapper">
-                            <img src="assets/images/groom_portrait.webp" alt="Pengantin Pria" loading="lazy">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images_hd/groom_portrait.webp">
+                                <img src="assets/images/groom_portrait.webp" alt="Pengantin Pria" loading="lazy">
+                            </picture>
                         </div>
                         <h3 class="person-name">Dofi Saputra</h3>
                         <p class="person-parents">Putra pertama dari<br>Bapak Diarjo dan Ibu Jumini</p>
@@ -165,7 +168,10 @@
                     <!-- Bride -->
                     <div class="person fade-left">
                         <div class="person-img-wrapper">
-                            <img src="assets/images/bride_portrait.webp" alt="Pengantin Wanita" loading="lazy">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images_hd/bride_portrait.webp">
+                                <img src="assets/images/bride_portrait.webp" alt="Pengantin Wanita" loading="lazy">
+                            </picture>
                         </div>
                         <h3 class="person-name">Rafina Arinita</h3>
                         <p class="person-parents">Putri bungsu dari<br>Bapak Joko Susilo dan Ibu Arifah Fardani</p>
@@ -190,7 +196,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_school.webp" alt="2019" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_school.webp">
+                                    <img src="assets/images/story_school.webp" alt="2019" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2019</h4>
@@ -206,7 +215,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_chat.webp" alt="2020" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_chat.webp">
+                                    <img src="assets/images/story_chat.webp" alt="2020" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2020</h4>
@@ -222,7 +234,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_grad.webp" alt="2021" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_grad.webp">
+                                    <img src="assets/images/story_grad.webp" alt="2021" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2021</h4>
@@ -238,7 +253,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_distance.webp" alt="2022" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_distance.webp">
+                                    <img src="assets/images/story_distance.webp" alt="2022" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2022</h4>
@@ -256,7 +274,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_reunion.webp" alt="2023" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_reunion.webp">
+                                    <img src="assets/images/story_reunion.webp" alt="2023" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2023</h4>
@@ -273,7 +294,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_proposal.webp" alt="2024" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_proposal.webp">
+                                    <img src="assets/images/story_proposal.webp" alt="2024" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2024</h4>
@@ -290,7 +314,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_engagement.webp" alt="2025" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_engagement.webp">
+                                    <img src="assets/images/story_engagement.webp" alt="2025" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2025</h4>
@@ -306,7 +333,10 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <div class="timeline-img-wrapper">
-                                <img src="assets/images/story_wedding.webp" alt="2026" loading="lazy">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="assets/images_hd/story_wedding.webp">
+                                    <img src="assets/images/story_wedding.webp" alt="2026" loading="lazy">
+                                </picture>
                             </div>
                             <div class="timeline-header-flex">
                                 <h4 class="timeline-title">2026</h4>
@@ -550,5 +580,7 @@
 
     <script src="script.js"></script>
 </body>
+
+</html>
 
 </html>
