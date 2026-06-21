@@ -262,12 +262,6 @@ picture {
     background-image: var(--bg-mobile);
 }
 
-@media (min-width: 768px) {
-    .cover-slideshow .cover-slide,
-    .hero-slideshow .slide {
-        background-image: var(--bg-desktop);
-    }
-}
 
 .cover-overlay {
     position: absolute;
@@ -369,6 +363,13 @@ picture {
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
     background-image: var(--bg-mobile);
+}
+
+@media (min-width: 768px) {
+    .cover-slideshow .cover-slide,
+    .hero-slideshow .slide {
+        background-image: var(--bg-desktop);
+    }
 }
 
 .hero-slideshow .slide.active {
