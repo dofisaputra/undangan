@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Superpowers plugin working dir
+.superpowers/
+
+# Working / spec docs (not part of the published site)
+docs/
+
+# Source images for manual cropping & originals backup (large, workflow-only)
+assets/crops/
+assets/images_backup/

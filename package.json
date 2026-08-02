@@ -1,0 +1,27 @@
+{
+  "name": "undangan",
+  "version": "1.0.0",
+  "description": "Website Undangan Pernikahan Digital Dofi & Rafina dengan integrasi RSVP Google Sheets.",
+  "main": "script.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dofisaputra/undangan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dofisaputra/undangan/issues"
+  },
+  "homepage": "https://github.com/dofisaputra/undangan#readme",
+  "dependencies": {
+    "sharp": "^0.35.3"
+  }
+}

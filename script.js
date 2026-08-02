@@ -11,42 +11,184 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let isPlaying = false;
 
-    // List of gallery image filenames inside assets/images/
-    // You can add as many prewed_gallery* files here as you want!
+    // Gallery filenames. Rendered from subfolders per usage:
+    //   carousel -> assets/images/carousel/ + assets/images_hd/carousel/
+    //   mosaic   -> assets/images/mosaic/   + assets/images_hd/mosaic/
     const galleryFiles = [
-        'prewed_gallery1.webp',
-        'prewed_gallery2.webp'
+        'gallery_1.webp',
+        'gallery_2.webp',
+        'gallery_3.webp',
+        'gallery_4.webp',
+        'gallery_5.webp',
+        'gallery_6.webp',
+        'gallery_7.webp',
+        'gallery_8.webp',
+        'gallery_9.webp'
     ];
 
-    const renderGallery = () => {
-        const galleryGrid = document.getElementById('gallery-grid');
-        if (!galleryGrid) return;
+    // --- Gallery: Render Carousel + Masonry Grid ---
+    let carouselInterval = null;
+    let carouselIndex = 0;
 
-        galleryGrid.innerHTML = '';
+    const renderGallery = () => {
+        const carouselTrack = document.getElementById('carousel-track');
+        const carouselDots = document.getElementById('carousel-dots');
+        const masonryGrid = document.getElementById('gallery-masonry');
+
+        if (!carouselTrack || !masonryGrid) return;
+
+        carouselTrack.innerHTML = '';
+        if (carouselDots) carouselDots.innerHTML = '';
+        masonryGrid.innerHTML = '';
+
         galleryFiles.forEach((filename, idx) => {
+            // --- Carousel Slide ---
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+
+            const slidePicture = document.createElement('picture');
+            const slideSource = document.createElement('source');
+            slideSource.media = '(min-width: 768px)';
+            slideSource.srcset = `assets/images_hd/carousel/${filename}`;
+
+            const slideImg = document.createElement('img');
+            slideImg.src = `assets/images/carousel/${filename}`;
+            slideImg.alt = `Foto Galeri ${idx + 1}`;
+            slideImg.loading = idx === 0 ? 'eager' : 'lazy';
+
+            slidePicture.appendChild(slideSource);
+            slidePicture.appendChild(slideImg);
+            slide.appendChild(slidePicture);
+            carouselTrack.appendChild(slide);
+
+            // --- Carousel Dot ---
+            if (carouselDots) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot';
+                dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+                dot.addEventListener('click', () => goToSlide(idx));
+                carouselDots.appendChild(dot);
+            }
+
+            // --- Masonry Item ---
             const item = document.createElement('div');
-            item.className = 'gallery-item fade-up';
-            // Stagger animation delays
+            item.className = `gallery-item fade-up mosaic-tile-${idx + 1}`;
             item.style.animationDelay = `${(idx % 3) * 0.1}s`;
 
-            const picture = document.createElement('picture');
+            const itemPicture = document.createElement('picture');
+            const itemSource = document.createElement('source');
+            itemSource.media = '(min-width: 768px)';
+            itemSource.srcset = `assets/images_hd/mosaic/${filename}`;
 
-            const source = document.createElement('source');
-            source.media = '(min-width: 768px)';
-            source.srcset = `assets/images_hd/${filename}`;
+            const itemImg = document.createElement('img');
+            itemImg.src = `assets/images/mosaic/${filename}`;
+            itemImg.alt = `Foto Galeri ${idx + 1}`;
+            itemImg.loading = 'lazy';
 
-            const img = document.createElement('img');
-            img.src = `assets/images/${filename}`;
-            img.alt = `Foto Prewedding ${idx + 1}`;
-            img.loading = 'lazy';
+            itemPicture.appendChild(itemSource);
+            itemPicture.appendChild(itemImg);
+            item.appendChild(itemPicture);
+            masonryGrid.appendChild(item);
+        });
 
-            picture.appendChild(source);
-            picture.appendChild(img);
-            item.appendChild(picture);
-            galleryGrid.appendChild(item);
+        carouselIndex = 0;
+        updateCarouselPosition();
+        startCarouselAutoSlide();
+    };
+
+    // --- Carousel Controls ---
+    const updateCarouselPosition = () => {
+        const track = document.getElementById('carousel-track');
+        if (!track) return;
+        track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+
+        const dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === carouselIndex);
         });
     };
+
+    const goToSlide = (index) => {
+        const total = galleryFiles.length;
+        if (total === 0) return;
+        carouselIndex = ((index % total) + total) % total;
+        updateCarouselPosition();
+        resetCarouselAutoSlide();
+    };
+
+    const nextSlide = () => goToSlide(carouselIndex + 1);
+    const prevSlide = () => goToSlide(carouselIndex - 1);
+
+    const startCarouselAutoSlide = () => {
+        stopCarouselAutoSlide();
+        if (galleryFiles.length <= 1) return;
+        carouselInterval = setInterval(nextSlide, 2000);
+    };
+
+    const stopCarouselAutoSlide = () => {
+        if (carouselInterval) {
+            clearInterval(carouselInterval);
+            carouselInterval = null;
+        }
+    };
+
+    const resetCarouselAutoSlide = () => {
+        stopCarouselAutoSlide();
+        startCarouselAutoSlide();
+    };
+
+    const setupCarouselEvents = () => {
+        const carousel = document.getElementById('gallery-carousel');
+
+        if (carousel) {
+            carousel.addEventListener('mouseenter', stopCarouselAutoSlide);
+            carousel.addEventListener('mouseleave', startCarouselAutoSlide);
+
+            let startX = 0;
+            let isDragging = false;
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                stopCarouselAutoSlide();
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    diff > 0 ? nextSlide() : prevSlide();
+                }
+                startCarouselAutoSlide();
+            });
+
+            carousel.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                isDragging = true;
+                stopCarouselAutoSlide();
+                e.preventDefault();
+            });
+
+            carousel.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = startX - e.clientX;
+                if (Math.abs(diff) > 50) {
+                    diff > 0 ? nextSlide() : prevSlide();
+                }
+                startCarouselAutoSlide();
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+        }
+    };
+
     renderGallery();
+    setupCarouselEvents();
 
     // Cover Slideshow Interval
     let coverIntervalId = null;
@@ -501,7 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Function to update gallery images array dynamically (handles "no limits")
     const updateGalleryImages = () => {
-        galleryImages = Array.from(document.querySelectorAll('.gallery-grid .gallery-item img'));
+        galleryImages = Array.from(document.querySelectorAll('.gallery-masonry .gallery-item img'));
     };
     
     const updateSliderPosition = (animate = true) => {
@@ -530,7 +672,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const src = img.getAttribute('src');
             const filename = src.substring(src.lastIndexOf('/') + 1);
-            source.srcset = `assets/images_hd/${filename}`;
+            // Mosaic images live under images/mosaic/; mirror that subfolder in HD
+            source.srcset = `assets/images_hd/mosaic/${filename}`;
             
             const slideImg = document.createElement('img');
             slideImg.src = src;
@@ -587,10 +730,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Setup click events on gallery items
     const setupGalleryClick = () => {
-        const galleryGrid = document.getElementById('gallery-grid');
-        if (!galleryGrid) return;
+        const masonryGrid = document.getElementById('gallery-masonry');
+        if (!masonryGrid) return;
         
-        galleryGrid.addEventListener('click', (e) => {
+        masonryGrid.addEventListener('click', (e) => {
             const img = e.target.closest('.gallery-item img');
             if (!img) return;
             
@@ -603,31 +746,39 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     setupGalleryClick();
     
-    // Close on clicking backdrop/overlay area
-    lightbox.addEventListener('click', (e) => {
-        // If clicking on the wrapper slide (background around image) or lightbox overlay, close it
-        if (e.target.classList.contains('lightbox-slide') || e.target === lightbox) {
-            closeLightbox();
-        }
-    });
-    
     // Swipe / Drag logic
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
+    let hasDragged = false;
     const dragThreshold = 50; // pixels to trigger slide change
-    
+
+    // Close on clicking backdrop/overlay area (anywhere outside the zoomed image)
+    lightbox.addEventListener('click', (e) => {
+        if (hasDragged) {
+            hasDragged = false;
+            return;
+        }
+        if (e.target.tagName !== 'IMG') {
+            closeLightbox();
+        }
+    });
+
     const handleDragStart = (e) => {
         isDragging = true;
+        hasDragged = false;
         startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+        currentX = startX;
         lightboxSlider.style.transition = 'none';
     };
-    
+
     const handleDragMove = (e) => {
         if (!isDragging) return;
         currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
         const diffX = currentX - startX;
-        
+        if (Math.abs(diffX) > 10) {
+            hasDragged = true;
+        }
         const baseOffset = -currentIndex * window.innerWidth;
         const totalOffset = baseOffset + diffX;
         lightboxSlider.style.transform = `translateX(${totalOffset}px)`;
