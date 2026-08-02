@@ -1,0 +1,29 @@
+name: Sync guest list
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Fetch and commit guest list
+        env:
+          EXEC_URL: ${{ vars.GSHEET_EXEC_URL }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          curl -sL "${EXEC_URL}?action=guests" -o guests.json
+          jq -e . guests.json >/dev/null 2>&1 || { echo "::error::Invalid guests.json from sheet"; exit 1; }
+          git add guests.json
+          git diff --cached --quiet && { echo "No changes"; exit 0; }
+          git commit -m "chore: sync guest list from sheet"
+          git push

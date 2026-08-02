@@ -306,20 +306,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzqgSEeLC9zV1UspCOVjpaNA-INH22PFQiowAmwJr8OzBUTsaIcZSDac6J6yCLVVCQ3/exec';
     const guestNameEl = document.querySelector('.guest-name');
 
-    // Personalize guest name from ?to= param, only if name exists in guest list sheet
+    // Personalize guest name from ?to= param, matched against locally-served guest list
     const guestParam = new URLSearchParams(window.location.search).get('to');
     if (guestParam && guestNameEl) {
         const defaultGuestName = guestNameEl.textContent;
         guestNameEl.textContent = 'Memuat...';
         guestNameEl.classList.add('loading');
-        fetch(`${scriptURL}?action=guest&to=${encodeURIComponent(guestParam)}`)
+        fetch('guests.json')
             .then(r => r.json())
-            .then(data => {
-                if (data.result === 'success') {
-                    guestNameEl.textContent = data.name;
-                } else {
-                    guestNameEl.textContent = defaultGuestName;
-                }
+            .then(names => {
+                const wanted = guestParam.trim().toLowerCase();
+                const match = names.find(n => String(n).trim().toLowerCase() === wanted);
+                guestNameEl.textContent = match || defaultGuestName;
             })
             .catch(() => {
                 guestNameEl.textContent = defaultGuestName;
