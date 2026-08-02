@@ -304,6 +304,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. RSVP & Guestbook Google Sheets Integration ---
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzqgSEeLC9zV1UspCOVjpaNA-INH22PFQiowAmwJr8OzBUTsaIcZSDac6J6yCLVVCQ3/exec';
+    const guestNameEl = document.querySelector('.guest-name');
+
+    // Personalize guest name from ?to= param, only if name exists in guest list sheet
+    const guestParam = new URLSearchParams(window.location.search).get('to');
+    if (guestParam && guestNameEl) {
+        const defaultGuestName = guestNameEl.textContent;
+        guestNameEl.textContent = 'Memuat...';
+        guestNameEl.classList.add('loading');
+        fetch(`${scriptURL}?action=guest&to=${encodeURIComponent(guestParam)}`)
+            .then(r => r.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    guestNameEl.textContent = data.name;
+                } else {
+                    guestNameEl.textContent = defaultGuestName;
+                }
+            })
+            .catch(() => {
+                guestNameEl.textContent = defaultGuestName;
+            })
+            .finally(() => {
+                guestNameEl.classList.remove('loading');
+            });
+    }
+
     const rsvpForm = document.getElementById('rsvp-form');
     const wishesLoader = document.getElementById('wishes-loader');
     const wishesList = document.getElementById('wishes-list');

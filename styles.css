@@ -320,6 +320,15 @@ picture {
     border-bottom: 1px dashed var(--clr-gold);
 }
 
+.cover .guest-name.loading {
+    animation: guestNamePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes guestNamePulse {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+}
+
 .cover .apology {
     font-size: 0.75rem;
     margin-bottom: 2rem;
