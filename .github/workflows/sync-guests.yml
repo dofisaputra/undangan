@@ -4,6 +4,10 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
+concurrency:
+  group: sync-guests
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -19,10 +23,25 @@ jobs:
         env:
           EXEC_URL: ${{ vars.GSHEET_EXEC_URL }}
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          curl -sL "${EXEC_URL}?action=guests" -o guests.json
-          jq -e . guests.json >/dev/null 2>&1 || { echo "::error::Invalid guests.json from sheet"; exit 1; }
+
+          # Retry the fetch: the GAS exec endpoint intermittently returns an HTML
+          # page (cold start / redirect quirk) instead of JSON. A single transient
+          # bad response should not fail the whole run.
+          attempt=0
+          until curl -fsSL --max-time 60 --retry 3 --retry-all-errors \
+            "${EXEC_URL}?action=guests" -o guests.json \
+            && jq -e 'type == "array" and length > 0' guests.json >/dev/null 2>&1; do
+            attempt=$((attempt + 1))
+            if [ "$attempt" -ge 5 ]; then
+              echo "::error::Invalid or unreachable guests.json from sheet after $attempt attempts"
+              exit 1
+            fi
+            sleep 10
+          done
+
           git add guests.json
           git diff --cached --quiet && { echo "No changes"; exit 0; }
           git commit -m "chore: sync guest list from sheet"
