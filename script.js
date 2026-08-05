@@ -307,7 +307,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const guestNameEl = document.querySelector('.guest-name');
 
     // Personalize guest name from ?to= param, matched against locally-served guest list
+    // If no ?to= param, show gunungan ornament instead of the guest block
     const guestParam = new URLSearchParams(window.location.search).get('to');
+    const coverGunungan = document.getElementById('cover-gunungan');
+    if (guestParam) {
+        // Guest link present -> show personalized name block, hide ornament
+        document.getElementById('guest-block').hidden = false;
+        document.querySelector('.guest-name').hidden = false;
+        document.querySelector('.apology').hidden = false;
+        if (coverGunungan) coverGunungan.hidden = true;
+    } else if (coverGunungan) {
+        // No guest link -> show gunungan ornament so the cover isn't empty
+        coverGunungan.hidden = false;
+    }
     if (guestParam && guestNameEl) {
         const defaultGuestName = guestNameEl.textContent;
         guestNameEl.textContent = 'Memuat...';

@@ -320,6 +320,14 @@ picture {
     border-bottom: 1px dashed var(--clr-gold);
 }
 
+.cover .cover-gunungan {
+    display: block;
+    width: 110px;
+    height: auto;
+    margin: 0.5rem auto 0.75rem;
+    opacity: 0.9;
+}
+
 .cover .guest-name.loading {
     animation: guestNamePulse 1.2s ease-in-out infinite;
 }
