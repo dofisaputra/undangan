@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzqgSEeLC9zV1UspCOVjpaNA-INH22PFQiowAmwJr8OzBUTsaIcZSDac6J6yCLVVCQ3/exec';
     const guestNameEl = document.querySelector('.guest-name');
 
-    // Personalize guest name from ?to= param, matched against locally-served guest list
+    // Personalize guest name from ?to= param, validated against the Daftar Tamu sheet
     // If no ?to= param, show gunungan ornament instead of the guest block
     const guestParam = new URLSearchParams(window.location.search).get('to');
     const coverGunungan = document.getElementById('cover-gunungan');
@@ -324,12 +324,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const defaultGuestName = guestNameEl.textContent;
         guestNameEl.textContent = 'Memuat...';
         guestNameEl.classList.add('loading');
-        fetch('guests.json')
+        fetch(`${scriptURL}?action=guest&to=${encodeURIComponent(guestParam)}`)
             .then(r => r.json())
-            .then(names => {
-                const wanted = guestParam.trim().toLowerCase();
-                const match = names.find(n => String(n).trim().toLowerCase() === wanted);
-                guestNameEl.textContent = match || defaultGuestName;
+            .then(data => {
+                if (data.result === 'success') {
+                    guestNameEl.textContent = data.name;
+                } else {
+                    guestNameEl.textContent = defaultGuestName;
+                }
             })
             .catch(() => {
                 guestNameEl.textContent = defaultGuestName;
